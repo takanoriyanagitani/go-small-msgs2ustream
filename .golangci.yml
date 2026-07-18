@@ -1,0 +1,58 @@
+version: "2"
+
+linters:
+
+  default: all
+
+  disable:
+    - wsl
+    - wsl_v5
+    - nlreturn
+    - nonamedreturns
+    - exhaustruct
+    - varnamelen
+    - wrapcheck
+    - forbidigo
+
+    - ireturn
+    - mnd
+    - gosec
+    - revive
+    - gochecknoglobals
+    - errcheck
+    - tagliatelle
+
+  settings:
+
+    depguard:
+      rules:
+        main:
+          files:
+            - $all
+          allow:
+            - $gostd
+            - github.com/takanoriyanagitani/go-small-msgs2ustream
+          deny:
+            - pkg: unsafe
+
+    nolintlint:
+      require-specific: true
+      require-explanation: true
+      allow-unused: false
+      allow-no-explanation:
+        - gochecknoglobals
+
+    govet:
+      enable-all: true
+      disable:
+      - fieldalignment
+
+    staticcheck:
+      checks:
+      - all
+      - -ST1017
+      - -ST1023
+      - -QF1011
+      - -QF1008
+      - -ST1001
+      - -ST1000
